@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MACBERRY Drink</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion: a bright beverage brand site that also sells B2B (catalog, spec sheet, quote)
+   IDEA the MACBERRY label itself: pink-to-fuchsia field, plum lettering, Andean peak, berries and maca
+   PICTURE a large bottle standing before the Misti-like plum mountain with blueberries and a maca root
+   COLOUR fuchsia/pink gradient dominant, deep plum support, maca yellow accent, blueberry blue for detail
+   TYPE Archivo 900 uppercase display + DM Sans text
+   LAYOUT hero = colour field full width with scene; then catalog, spec sheet, origin, traceability, quote form, footer */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#1c0716);--ink:light-dark(#2b0a22,#fbe8f3);--soft:light-dark(#fff1f8,#2a0c22);
+--line:light-dark(#f1c6de,#4a1a3e);--plum:#4a1236;--plum2:light-dark(#4a1236,#ffd0ea);
+--pink:#ff9fcf;--fuch:#e0157a;--maca:#f4c430;--berry:#3c3f9f;--mute:light-dark(#76506a,#d6a9c6)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "DM Sans",system-ui,sans-serif;overflow-x:clip}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:Archivo,system-ui,sans-serif;letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
+h2{font-size:clamp(30px,4.2vw,48px);font-weight:900;text-transform:uppercase;color:var(--plum2)}
+h3{font-size:20px;font-weight:800}
+p{margin:0 0 12px}
+a{color:inherit}
+html[lang=es] .en,html[lang=en] .es{display:none}
+.band{padding-block:clamp(40px,6vw,88px);padding-inline:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.lead{font-size:18px;color:var(--mute);max-width:60ch;margin-top:12px}
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--plum) 94%,transparent);backdrop-filter:blur(8px);color:#fff}
+nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:10px max(5vw,16px)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:900 22px Archivo,sans-serif;letter-spacing:.01em}
+.links{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto;align-items:center}
+.links a{text-decoration:none;padding:10px 12px;border-radius:999px;font-weight:500;font-size:15px}
+.links a:hover,.links a:focus-visible{background:#ffffff22;outline:none}
+.lang{border:1.5px solid #ffffff88;background:none;color:#fff;border-radius:999px;padding:8px 14px;font:700 14px "DM Sans";cursor:pointer;min-height:40px}
+.lang:hover{background:#fff;color:var(--plum)}
+/* hero */
+.hero{background:linear-gradient(170deg,var(--pink) 0%,#f45aa6 45%,var(--fuch) 100%);color:var(--plum);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px;align-items:center}
+.hero h1{font-size:clamp(52px,7.2vw,96px);font-weight:900;text-transform:uppercase;letter-spacing:-.03em}
+.hero .sub{font:800 clamp(20px,2.4vw,28px) Archivo,sans-serif;text-transform:uppercase;margin:10px 0 16px}
+.hero p.t{font-size:18px;max-width:46ch;color:#3a0a2b}
+.origin{display:inline-block;margin-top:6px;color:#fff;font-weight:700;letter-spacing:.02em}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:999px;font:700 16px "DM Sans";text-decoration:none;border:0;cursor:pointer}
+.btn.p{background:var(--plum);color:#fff}.btn.p:hover{background:#2c0820}
+.btn.g{background:#ffffffcc;color:var(--plum)}.btn.g:hover{background:#fff}
+.btn:focus-visible{outline:3px solid var(--maca);outline-offset:2px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px;font-weight:700;color:#3a0a2b}
+.facts b{display:block;font:900 26px Archivo,sans-serif;color:var(--plum)}
+.scene{position:relative;aspect-ratio:1/1;max-height:600px;width:100%;border-radius:32px;overflow:hidden;box-shadow:0 0 0 6px #ffffff55}
+.scene svg{width:100%;height:100%;display:block}
+@media(prefers-reduced-motion:no-preference){.bob{animation:bob 5s ease-in-out infinite;transform-origin:center bottom}@keyframes bob{50%{transform:translateY(-10px)}}}
+/* catalog */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:32px}
+.card{background:var(--soft);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.card .art{height:170px;border-radius:16px;background:linear-gradient(160deg,var(--pink),var(--fuch));display:grid;place-items:center}
+.price{font:900 32px Archivo,sans-serif;color:var(--fuch);white-space:nowrap}
+.price small{display:block;white-space:normal;font:500 14px "DM Sans";color:var(--mute)}
+.tag{align-self:flex-start;background:var(--maca);color:#3a2a00;font-weight:700;font-size:13px;border-radius:999px;padding:3px 10px}
+.card ul{margin:0;padding-left:18px;color:var(--mute)}
+.card .btn{margin-top:auto}
+/* spec */
+.spec{background:var(--plum);color:#fde6f2}
+.spec h2{color:#fff}
+.spec .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+.dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:10px 18px;margin-top:22px}
+.dl dt{font-weight:700;color:var(--pink)}.dl dd{margin:0}
+.nf{background:#fff;color:#111;border-radius:14px;padding:18px 18px 12px;font-size:15px}
+.nf h3{font:900 30px Archivo,sans-serif;border-bottom:8px solid #111;padding-bottom:6px;margin-bottom:6px;text-transform:none}
+.nf table{width:100%;border-collapse:collapse}
+.nf td{border-top:1px solid #bbb;padding:5px 0}
+.nf td:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.nf .k td{border-top:4px solid #111;font-weight:700}
+.ing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+.ing div{background:#ffffff12;border-radius:14px;padding:14px}
+.ing b{display:block;font:900 26px Archivo,sans-serif;color:#fff}
+/* origin */
+.origin-sec .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center}
+.route{display:grid;gap:0;margin-top:20px}
+.stop{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding-bottom:18px;position:relative}
+.stop:not(:last-child)::after{content:"";position:absolute;left:21px;top:44px;bottom:0;width:3px;background:var(--fuch)}
+.dot{width:44px;height:44px;border-radius:50%;background:var(--fuch);color:#fff;display:grid;place-items:center;font:900 16px Archivo,sans-serif}
+.stop:first-child .dot{background:var(--maca);color:#3a2a00}
+.stop:last-child .dot{background:var(--berry)}
+.stop b{display:block;font-size:17px}.stop span{color:var(--mute)}
+.alt{background:linear-gradient(180deg,#ffe2f0,#ffc4e1);border-radius:26px;aspect-ratio:4/3}
+:root[data-theme=dark] .alt{background:linear-gradient(180deg,#3a1030,#5a1446)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .alt{background:linear-gradient(180deg,#3a1030,#5a1446)}}
+/* trace */
+.trace{background:var(--soft)}
+.trace .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.lookup{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+input,select{font:16px "DM Sans";color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px;width:100%}
+input:focus,select:focus{outline:3px solid color-mix(in srgb,var(--fuch) 45%,transparent);border-color:var(--fuch)}
+.lookup input{flex:1 1 200px;width:auto;text-transform:uppercase}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:8px 12px;font:500 14px "DM Sans";cursor:pointer;min-height:40px}
+.chip:hover{border-color:var(--fuch)}
+.lot{background:var(--bg);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.lot .top{background:linear-gradient(120deg,var(--pink),var(--fuch));color:#fff;padding:18px 22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.lot .top b{font:900 26px Archivo,sans-serif;letter-spacing:.02em}
+.ok{background:#fff;color:#0d7a3e;border-radius:999px;padding:4px 12px;font-weight:700;font-size:14px}
+.lot dl{margin:0;padding:18px 22px}
+.lot .dl dt{color:var(--fuch)}
+.steps{list-style:none;margin:0;padding:0 22px 20px;display:grid;gap:8px}
+.steps li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:start;font-size:15px}
+.steps li::before{content:"✓";color:#0d7a3e;font-weight:900}
+.steps time{color:var(--mute);white-space:nowrap}
+.none{padding:22px;color:var(--mute)}
+/* quote */
+.quote .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:32px;align-items:start;margin-top:28px}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+label{display:grid;gap:6px;font-weight:700;font-size:15px}
+.full{grid-column:1/-1}
+.req{color:var(--fuch)}
+.err{color:#c4002f;font-weight:500;font-size:14px;min-height:0}
+.sum{position:sticky;top:84px;background:var(--plum);color:#fde6f2;border-radius:22px;padding:24px}
+.sum h3{color:#fff;margin-bottom:12px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #ffffff22}
+.row span:last-child{font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.total{font:900 clamp(32px,4vw,44px) Archivo,sans-serif;color:var(--maca);margin-top:12px;white-space:nowrap}
+.note{font-size:13px;color:#e9bdd5;margin-top:10px}
+.done{grid-column:1/-1;background:#e8f8ee;color:#0b4d28;border:1px solid #9bd9b2;border-radius:16px;padding:16px 18px}
+:root[data-theme=dark] .done{background:#0d2a1a;color:#bff0d2;border-color:#1f6b40}
+.hist{margin-top:16px;font-size:14px;color:var(--mute)}
+/* footer */
+footer{background:#2c0820;color:#f6d3e6}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}
+footer b{color:#fff}
+footer .small{font-size:13px;color:#c99ab6;margin-top:24px;grid-column:1/-1;border-top:1px solid #ffffff22;padding-top:16px}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}.spec .wrap,.origin-sec .wrap,.trace .wrap,.quote .wrap{grid-template-columns:1fr}.sum{position:static}footer .wrap{grid-template-columns:1fr}.card .art{height:140px}}
+@media(max-width:720px){.hero .wrap{grid-template-columns:1fr}.scene{max-height:420px;order:2}.links a{padding:8px 9px;font-size:14px}}
+@media(max-width:600px){form{grid-template-columns:1fr}.ing{grid-template-columns:1fr}.links{margin-left:0}.dl{grid-template-columns:1fr;gap:2px 0}.dl dd{margin-bottom:8px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<radialGradient id="bb" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#7f86e6"/><stop offset=".55" stop-color="#3c3f9f"/><stop offset="1" stop-color="#22245e"/></radialGradient>
+<symbol id="berry" viewBox="-20 -20 40 40"><circle r="18" fill="url(#bb)"/><path d="M-5-15 0-10 5-15 3-8-3-8z" fill="#1b1c4a"/><ellipse cx="-7" cy="-6" rx="4" ry="2.5" fill="#fff" opacity=".35"/></symbol>
+<symbol id="mtn" viewBox="0 0 60 30"><path d="M0 30 22 4 28 10 34 2 60 30z" fill="currentColor"/><path d="M22 4 28 10 34 2 30 12 26 9z" fill="#fff" opacity=".9"/></symbol>
+<linearGradient id="lab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb3d8"/><stop offset="1" stop-color="#e0157a"/></linearGradient>
+<linearGradient id="juice" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a0f3a"/><stop offset=".5" stop-color="#8b1a55"/><stop offset="1" stop-color="#4a0b30"/></linearGradient>
+<symbol id="bottle" viewBox="0 0 120 300">
+<rect x="44" y="0" width="32" height="20" rx="4" fill="#fff"/><rect x="44" y="18" width="32" height="5" fill="#e9e1e6"/>
+<path d="M46 23h28v14c0 10 26 18 26 40v196c0 14-10 24-24 24H44c-14 0-24-10-24-24V77c0-22 26-30 26-40z" fill="url(#juice)"/>
+<path d="M46 23h28v14c0 10 26 18 26 40v196c0 14-10 24-24 24H44c-14 0-24-10-24-24V77c0-22 26-30 26-40z" fill="none" stroke="#ffffff66" stroke-width="2"/>
+<rect x="20" y="110" width="80" height="140" fill="url(#lab)"/>
+<use href="#mtn" x="42" y="118" width="36" height="18" color="#4a1236"/>
+<text x="60" y="152" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="900" font-size="13" fill="#4a1236">MACBERRY</text>
+<text x="60" y="166" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700" font-size="5.6" fill="#4a1236">MACA &amp; BLUEBERRY DRINK</text>
+<use href="#berry" x="34" y="178" width="18" height="18"/><use href="#berry" x="46" y="186" width="16" height="16"/><use href="#berry" x="40" y="194" width="14" height="14"/>
+<path d="M70 182c8-2 14 6 10 16-3 7-9 14-14 18 0-6 0-10-2-14-3-8 0-18 6-20z" fill="#f4c430"/><path d="M76 180l4-8M74 181l-2-9" stroke="#3f8a3a" stroke-width="2.5" stroke-linecap="round"/>
+<text x="60" y="232" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700" font-size="6.5" fill="#fff">MADE IN AREQUIPA, PERU</text>
+<text x="60" y="242" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700" font-size="6.5" fill="#fff">500 mL · 16.9 FL OZ</text>
+<path d="M28 80c0 60 0 120 2 180" stroke="#fff" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" fill="none"/>
+</symbol>
+</defs></svg>
+
+<nav aria-label="Main"><div class="wrap">
+<a class="logo" href="#top"><svg width="38" height="20" viewBox="0 0 60 30" style="color:#ff9fcf"><use href="#mtn"/></svg>MACBERRY</a>
+<div class="links">
+<a href="#catalog"><span class="en">Catalog</span><span class="es">Catálogo</span></a>
+<a href="#product"><span class="en">Product</span><span class="es">Producto</span></a>
+<a href="#origin"><span class="en">Origin</span><span class="es">Origen</span></a>
+<a href="#trace"><span class="en">Trace a lot</span><span class="es">Rastrear lote</span></a>
+<a href="#quote"><span class="en">Get a quote</span><span class="es">Cotizar</span></a>
+<button class="lang" id="lang" type="button" aria-label="Cambiar idioma / Change language">ES</button>
+</div></div></nav>
+
+<header class="hero band" id="top"><div class="wrap">
+<div>
+<h1>Macberry</h1>
+<div class="sub"><span class="en">Maca &amp; blueberry drink</span><span class="es">Bebida de maca y arándanos</span></div>
+<p class="t"><span class="en">Yellow Peruvian maca, real blueberry pulp and honey, ready to drink in a 500 mL bottle. Fruity, smooth and made with an Andean ingredient your shoppers haven't tried in a bottle yet.</span><span class="es">Maca amarilla peruana, pulpa de arándanos y miel, lista para beber en botella de 500 mL. Frutal, suave y con un ingrediente andino que tus clientes todavía no han probado embotellado.</span></p>
+<span class="origin"><span class="en">Made in Arequipa, Peru</span><span class="es">Elaborado en Arequipa, Perú</span></span>
+<div class="cta">
+<a class="btn p" href="#quote"><span class="en">Request a quote</span><span class="es">Solicitar cotización</span></a>
+<a class="btn g" href="#catalog"><span class="en">See the catalog</span><span class="es">Ver catálogo</span></a>
+</div>
+<div class="facts">
+<div><b>500 mL</b><span class="en">per bottle</span><span class="es">por botella</span></div>
+<div><b>5 g</b><span class="en">maca per bottle</span><span class="es">de maca por botella</span></div>
+<div><b>6 <span class="en">months</span><span class="es">meses</span></b><span class="en">shelf life, no fridge</span><span class="es">de vida útil, sin frío</span></div>
+</div>
+</div>
+<div class="scene" aria-label="MACBERRY bottle in front of an Andean volcano with blueberries and maca">
+<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet">
+<rect width="600" height="600" fill="#ffc2e0"/><circle cx="470" cy="130" r="64" fill="#fff" opacity=".55"/>
+<path d="M-10 470 150 330 230 380 330 190 395 240 430 215 610 430 610 610-10 610z" fill="#c2105f" opacity=".55"/>
+<path d="M-20 520 170 175 210 210 250 180 450 520z" fill="#4a1236"/>
+<path d="M170 175 210 210 250 180 230 236 208 218 186 240z" fill="#fff"/>
+<path d="M170 175 110 285 168 262z" fill="#2e0a22" opacity=".6"/>
+<path d="M-10 520c120-30 260-40 620-10v100H-10z" fill="#7a1650"/>
+<ellipse cx="300" cy="545" rx="150" ry="18" fill="#2e0a22" opacity=".45"/>
+<g class="bob"><use href="#bottle" x="250" y="190" width="140" height="350"/></g>
+<g><use href="#berry" x="120" y="470" width="62" height="62"/><use href="#berry" x="168" y="500" width="50" height="50"/><use href="#berry" x="92" y="508" width="44" height="44"/><use href="#berry" x="140" y="520" width="40" height="40"/></g>
+<g transform="translate(410 455) rotate(-18)"><path d="M10 0c34-8 60 18 48 52-8 22-26 40-44 52 2-18 0-30-6-42-12-24-16-56 2-62z" fill="#f4c430"/><path d="M14 4c-6 20 0 40 10 60" stroke="#c99512" stroke-width="3" fill="none"/><path d="M28 0l10-26M22 2l-6-26M33 2l20-18" stroke="#3f8a3a" stroke-width="6" stroke-linecap="round"/></g>
+</svg>
+</div>
+</div></header>
+
+<section class="band" id="catalog"><div class="wrap">
+<h2><span class="en">Catalog</span><span class="es">Catálogo</span></h2>
+<p class="lead"><span class="en">Wholesale prices delivered duty paid (DDP) to the importer's warehouse in Irwindale, California. Freight, U.S. customs entry and import duties are already included.</span><span class="es">Precios mayoristas DDP, entregados con derechos pagados en el almacén del importador en Irwindale, California. Incluyen flete, despacho de importación y aranceles de EE. UU.</span></p>
+<div class="grid3">
+<article class="card">
+<div class="art"><svg width="70" height="170" viewBox="0 0 120 300"><use href="#bottle"/></svg></div>
+<span class="tag"><span class="en">Retail unit</span><span class="es">Unidad de venta</span></span>
+<h3><span class="en">MACBERRY 500 mL bottle</span><span class="es">Botella MACBERRY 500 mL</span></h3>
+<div class="price">US$ 6.49 <small><span class="en">suggested retail</span><span class="es">precio sugerido al público</span></small></div>
+<ul><li><span class="en">Food-grade PET, hot-fill</span><span class="es">PET grado alimentario, llenado en caliente</span></li><li><span class="en">Screw cap with safety ring</span><span class="es">Tapa rosca con anillo de seguridad</span></li><li><span class="en">Label in English, “Product of Peru”</span><span class="es">Etiqueta en inglés, «Product of Peru»</span></li></ul>
+</article>
+<article class="card">
+<div class="art"><svg width="190" height="150" viewBox="0 0 190 150"><rect x="10" y="40" width="170" height="100" rx="6" fill="#d9a066"/><rect x="10" y="40" width="170" height="22" fill="#c48a52"/><use href="#mtn" x="70" y="78" width="50" height="25" color="#4a1236"/><text x="95" y="124" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="900" font-size="16" fill="#4a1236">MACBERRY · 12 × 500 mL</text><g><use href="#bottle" x="22" y="0" width="22" height="55"/><use href="#bottle" x="50" y="0" width="22" height="55"/><use href="#bottle" x="78" y="0" width="22" height="55"/><use href="#bottle" x="106" y="0" width="22" height="55"/><use href="#bottle" x="134" y="0" width="22" height="55"/></g></svg></div>
+<span class="tag"><span class="en">Wholesale</span><span class="es">Mayorista</span></span>
+<h3><span class="en">Case of 12 bottles</span><span class="es">Caja de 12 botellas</span></h3>
+<div class="price">US$ 42.00 <small><span class="en">DDP Irwindale · US$ 3.50 per bottle</span><span class="es">DDP Irwindale · US$ 3,50 por botella</span></small></div>
+<ul><li><span class="en">29 × 22 × 23 cm, 7.07 kg gross</span><span class="es">29 × 22 × 23 cm, 7,07 kg brutos</span></li><li><span class="en">Corrugated box with dividers, 3 × 4</span><span class="es">Cartón corrugado con separadores, 3 × 4</span></li><li><span class="en">6 L of drink per case</span><span class="es">6 L de bebida por caja</span></li></ul>
+<a class="btn p" href="#quote" data-cases="20"><span class="en">Quote cases</span><span class="es">Cotizar cajas</span></a>
+</article>
+<article class="card">
+<div class="art"><svg width="180" height="150" viewBox="0 0 180 150"><g fill="#d9a066" stroke="#b07a44" stroke-width="2"><rect x="20" y="20" width="44" height="26"/><rect x="66" y="20" width="44" height="26"/><rect x="112" y="20" width="44" height="26"/><rect x="20" y="48" width="44" height="26"/><rect x="66" y="48" width="44" height="26"/><rect x="112" y="48" width="44" height="26"/><rect x="20" y="76" width="44" height="26"/><rect x="66" y="76" width="44" height="26"/><rect x="112" y="76" width="44" height="26"/><rect x="20" y="104" width="44" height="26"/><rect x="66" y="104" width="44" height="26"/><rect x="112" y="104" width="44" height="26"/></g><rect x="12" y="130" width="152" height="14" fill="#8a5a30"/><path d="M14 18h148v114" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3"/></svg></div>
+<span class="tag"><span class="en">Full pallet</span><span class="es">Pallet completo</span></span>
+<h3><span class="en">Pallet of 80 cases</span><span class="es">Pallet de 80 cajas</span></h3>
+<div class="price">US$ 3,360 <small><span class="en">DDP · 960 bottles</span><span class="es">DDP · 960 botellas</span></small></div>
+<ul><li><span class="en">1.20 × 1.00 × 1.30 m, ISPM 15 wood</span><span class="es">1,20 × 1,00 × 1,30 m, madera NIMF 15</span></li><li><span class="en">16 cases per layer, 5 layers</span><span class="es">16 cajas por nivel, 5 niveles</span></li><li><span class="en">588.9 kg gross, stretch-wrapped</span><span class="es">588,9 kg brutos, con film</span></li></ul>
+<a class="btn p" href="#quote" data-cases="80"><span class="en">Quote pallets</span><span class="es">Cotizar pallets</span></a>
+</article>
+</div>
+</div></section>
+
+<section class="spec band" id="product"><div class="wrap">
+<div>
+<h2><span class="en">Product sheet</span><span class="es">Ficha del producto</span></h2>
+<p class="lead" style="color:#f0c5dc"><span class="en">A non-alcoholic, non-carbonated drink. Deep red with violet tones, fruity aroma, the earthy note of maca and the sweetness of honey.</span><span class="es">Bebida no alcohólica y no carbonatada. Rojo oscuro con tonos violáceos, aroma frutal, la nota terrosa de la maca y el dulzor de la miel.</span></p>
+<div class="ing">
+<div><b>75 g</b><span class="en">blueberry pulp</span><span class="es">de pulpa de arándanos</span></div>
+<div><b>5 g</b><span class="en">gelatinized yellow maca</span><span class="es">de maca amarilla gelatinizada</span></div>
+<div><b>20 g</b><span class="en">bee honey</span><span class="es">de miel de abeja</span></div>
+</div>
+<dl class="dl">
+<dt><span class="en">Ingredients</span><span class="es">Ingredientes</span></dt><dd><span class="en">Purified water, blueberry pulp, honey, gelatinized yellow maca powder, pectin, citric acid.</span><span class="es">Agua purificada, pulpa de arándanos, miel de abeja, maca amarilla gelatinizada en polvo, pectina y ácido cítrico.</span></dd>
+<dt><span class="en">Process</span><span class="es">Proceso</span></dt><dd><span class="en">Pasteurized and hot-filled; batch of 300 bottles.</span><span class="es">Pasteurizada y envasada en caliente; lotes de 300 botellas.</span></dd>
+<dt><span class="en">Shelf life</span><span class="es">Vida útil</span></dt><dd><span class="en">6 months closed, at room temperature, away from sunlight.</span><span class="es">6 meses cerrada, a temperatura ambiente y lejos de la luz solar.</span></dd>
+<dt><span class="en">HS code</span><span class="es">Partida</span></dt><dd>Perú 2202.99.00.00 · HTSUS 2202.99.90.00</dd>
+<dt><span class="en">Trade terms</span><span class="es">Condiciones</span></dt><dd><span class="en">DDP Irwindale, CA (Incoterms® 2020). Ocean LCL Callao–Los Angeles, 28 to 33 days door to door.</span><span class="es">DDP Irwindale, CA (Incoterms® 2020). Marítimo consolidado Callao–Los Ángeles, 28 a 33 días puerta a puerta.</span></dd>
+</dl>
+</div>
+<div class="nf" aria-label="Nutrition facts">
+<h3>Nutrition Facts</h3>
+<div style="font-weight:700">1 serving per container · Serving size 1 bottle (500 mL)</div>
+<table>
+<tr class="k"><td>Calories</td><td>126</td></tr>
+<tr><td><b>Total Fat</b> 0.5 g</td><td>1%</td></tr>
+<tr><td>&nbsp;&nbsp;Saturated Fat 0 g</td><td>0%</td></tr>
+<tr><td>&nbsp;&nbsp;Trans Fat 0 g</td><td></td></tr>
+<tr><td><b>Cholesterol</b> 0 mg</td><td>0%</td></tr>
+<tr><td><b>Sodium</b> 2 mg</td><td>0%</td></tr>
+<tr><td><b>Total Carbohydrate</b> 32 g</td><td>12%</td></tr>
+<tr><td>&nbsp;&nbsp;Dietary Fiber 3 g</td><td>11%</td></tr>
+<tr><td>&nbsp;&nbsp;Total Sugars 24 g</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;Includes 16 g Added Sugars</td><td>33%</td></tr>
+<tr class="k"><td>Protein 1 g</td><td></td></tr>
+</table>
+<p style="font-size:13px;margin-top:8px;color:#444">Values from the MACBERRY technical sheet, rounded to FDA label rules.</p>
+</div>
+</div></section>
+
+<section class="band origin-sec" id="origin"><div class="wrap">
+<div>
+<h2><span class="en">From the Andes to Los Angeles</span><span class="es">De los Andes a Los Ángeles</span></h2>
+<p class="lead"><span class="en">Maca is a root grown on the high Andean plateaus of central Peru, above 3,800 m, where few crops survive. It is dried and gelatinized by our suppliers, then blended in Arequipa with blueberry pulp and honey.</span><span class="es">La maca es una raíz que se cultiva en las mesetas altoandinas del centro del Perú, por encima de 3 800 m, donde pocos cultivos sobreviven. Nuestros proveedores la secan y gelatinizan, y en Arequipa se mezcla con pulpa de arándanos y miel.</span></p>
+<div class="route">
+<div class="stop"><div class="dot">1</div><div><b><span class="en">Andean highlands</span><span class="es">Altiplano andino</span></b><span class="en">Yellow maca, harvested, dried and gelatinized</span><span class="es">Maca amarilla cosechada, secada y gelatinizada</span></div></div>
+<div class="stop"><div class="dot">2</div><div><b>Cerro Colorado, Arequipa</b><span class="en">Blending, pasteurization, hot-fill and labeling</span><span class="es">Mezcla, pasteurización, llenado en caliente y etiquetado</span></div></div>
+<div class="stop"><div class="dot">3</div><div><b><span class="en">Port of Callao</span><span class="es">Puerto del Callao</span></b><span class="en">Export clearance and weekly LCL sailing, 20 days</span><span class="es">Despacho de exportación y salida semanal LCL, 20 días</span></div></div>
+<div class="stop"><div class="dot">4</div><div><b>Irwindale, California</b><span class="en">U.S. entry paid by us, delivered to the importer</span><span class="es">Importación pagada por nosotros, entrega al importador</span></div></div>
+</div>
+</div>
+<div class="alt"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMax slice" width="100%" height="100%" role="img" aria-label="Maca roots under Andean peaks">
+<path d="M0 190 70 110 120 150 190 70 250 130 300 95 400 180 400 300 0 300z" fill="#e0157a" opacity=".35"/>
+<path d="M40 230 160 90 195 120 230 92 330 230z" fill="#4a1236"/><path d="M160 90 195 120 230 92 214 132 196 118 178 136z" fill="#fff"/>
+<path d="M0 235c90-20 220-24 400-6v80H0z" fill="#7a1650"/>
+<g id="mr"><path d="M60 250c22-6 40 10 32 32-5 14-17 24-28 30 1-11 0-18-4-26-8-14-10-34 0-36z" fill="#f4c430"/><path d="M70 250l6-16M66 251l-4-16" stroke="#3f8a3a" stroke-width="4" stroke-linecap="round"/></g>
+<use href="#mr" x="90" y="-6"/><use href="#mr" x="190" y="4"/><use href="#mr" x="260" y="-4"/>
+<text x="200" y="40" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="900" font-size="22" fill="#4a1236" style="paint-order:stroke;stroke:#ffd3ea;stroke-width:5px">3 800 – 4 400 m</text>
+</svg></div>
+</div></section>
+
+<section class="band trace" id="trace"><div class="wrap">
+<div>
+<h2><span class="en">Trace your lot</span><span class="es">Rastrea tu lote</span></h2>
+<p class="lead"><span class="en">Every label carries a QR code that opens this page. Type the lot code printed next to the best-by date to see where and when your bottle was made.</span><span class="es">Cada etiqueta lleva un código QR que abre esta página. Escribe el código de lote impreso junto a la fecha de vencimiento para ver dónde y cuándo se elaboró tu botella.</span></p>
+<form class="lookup" id="lotForm" style="display:flex"><input id="lotIn" aria-label="Lot code" value="MB-261118-01" autocomplete="off"><button class="btn p" type="submit"><span class="en">Search</span><span class="es">Buscar</span></button></form>
+<div class="chips" id="chips"></div>
+<p style="font-size:13px;color:var(--mute);margin-top:14px"><span class="en">Demo lots with sample data. The production manager records each stage during the batch and releases the lot after the lab analysis.</span><span class="es">Lotes de demostración con datos de ejemplo. El jefe de producción registra cada etapa durante el lote y lo libera después del análisis de laboratorio.</span></p>
+</div>
+<div class="lot" id="lot" aria-live="polite"></div>
+</div></section>
+
+<section class="band quote" id="quote"><div class="wrap" style="display:block">
+<h2><span class="en">Request a quote</span><span class="es">Solicita una cotización</span></h2>
+<p class="lead"><span class="en">Tell us where to deliver and how much you need. The estimate updates as you type; our export team confirms the final quote within 48 hours.</span><span class="es">Indícanos dónde entregar y cuánto necesitas. El estimado se actualiza mientras escribes; nuestro equipo de exportación confirma la cotización final en 48 horas.</span></p>
+<div class="wrap" style="padding:0">
+<form id="qf" novalidate>
+<label><span><span class="en">Company</span><span class="es">Empresa</span> <span class="req">*</span></span><input id="q-company" required value="Amazonas Imports LLC"></label>
+<label><span><span class="en">Contact name</span><span class="es">Nombre de contacto</span> <span class="req">*</span></span><input id="q-name" required value="Laura Mendoza"></label>
+<label><span>Email <span class="req">*</span></span><input id="q-email" type="email" required value="purchasing@amazonasimports.example"></label>
+<label><span><span class="en">Phone</span><span class="es">Teléfono</span></span><input id="q-phone" type="tel" value="+1 626 555 0142"></label>
+<label><span><span class="en">Country</span><span class="es">País</span> <span class="req">*</span></span><select id="q-country"><option>United States</option><option>Canada</option><option>Mexico</option><option>Chile</option><option value="Other">Other / Otro</option></select></label>
+<label><span><span class="en">Delivery city</span><span class="es">Ciudad de entrega</span> <span class="req">*</span></span><input id="q-city" required value="Irwindale, CA"></label>
+<label><span><span class="en">Quantity (cases of 12)</span><span class="es">Cantidad (cajas de 12)</span> <span class="req">*</span></span><input id="q-qty" type="number" min="20" step="1" value="200" inputmode="numeric"></label>
+<label><span>Incoterm</span><select id="q-inc"><option value="DDP">DDP – Irwindale, CA</option><option value="FOB">FOB – Callao</option><option value="EXW">EXW – Arequipa</option></select></label>
+<label><span><span class="en">Desired delivery date</span><span class="es">Fecha de entrega deseada</span></span><input id="q-date" type="date"></label>
+<label><span><span class="en">Sales channel</span><span class="es">Canal de venta</span></span><select id="q-chan"><option>Latin grocery stores</option><option>Natural food stores</option><option>Convenience stores</option><option>Distributor / wholesaler</option></select></label>
+<label class="full"><span><span class="en">Comments</span><span class="es">Comentarios</span></span><input id="q-msg" value="We'd like samples for in-store tastings with the first order."></label>
+<div class="err full" id="qerr" role="alert"></div>
+<div class="full"><button class="btn p" type="submit"><span class="en">Send quote request</span><span class="es">Enviar solicitud</span></button></div>
+<div id="qdone" class="full" hidden></div>
+</form>
+<aside class="sum" aria-live="polite">
+<h3><span class="en">Estimate</span><span class="es">Estimado</span></h3>
+<div class="row"><span><span class="en">Bottles</span><span class="es">Botellas</span></span><span id="s-bot"></span></div>
+<div class="row"><span><span class="en">Cases</span><span class="es">Cajas</span></span><span id="s-cas"></span></div>
+<div class="row"><span>Pallets</span><span id="s-pal"></span></div>
+<div class="row"><span><span class="en">Gross weight</span><span class="es">Peso bruto</span></span><span id="s-kg"></span></div>
+<div class="row"><span><span class="en">Volume</span><span class="es">Volumen</span></span><span id="s-m3"></span></div>
+<div class="row"><span><span class="en">Price per bottle</span><span class="es">Precio por botella</span></span><span id="s-pu"></span></div>
+<div class="total" id="s-tot"></div>
+<div class="note" id="s-note"></div>
+<div class="note"><span class="en">Reference prices for the 2,400-bottle pilot order. Sample site: no data is sent.</span><span class="es">Precios referenciales del pedido piloto de 2 400 botellas. Sitio simulado: no se envían datos.</span></div>
+<div class="hist" id="hist" style="color:#e9bdd5"></div>
+</aside>
+</div>
+</div></section>
+
+<footer class="band"><div class="wrap">
+<div><a class="logo" href="#top" style="color:#fff"><svg width="38" height="20" viewBox="0 0 60 30" style="color:#ff9fcf"><use href="#mtn"/></svg>MACBERRY</a>
+<p style="margin-top:12px"><span class="en">MACBERRY S.A.C. makes a maca and blueberry drink in Arequipa, Peru, for the U.S. market.</span><span class="es">MACBERRY S.A.C. elabora una bebida de maca y arándanos en Arequipa, Perú, para el mercado estadounidense.</span></p></div>
+<div><b><span class="en">Plant</span><span class="es">Planta</span></b><p>Variante de Uchumayo, Cerro Colorado<br>Arequipa, Perú</p></div>
+<div><b><span class="en">Contact</span><span class="es">Contacto</span></b><p>export@macberry.example<br>+51 54 555 0123<br>Instagram @drinkmacberry</p></div>
+<div class="small"><span class="en">Simulated commercial website for the Logística Internacional course project (UCSM, 2026). Contact details and lot data are samples.</span><span class="es">Página web comercial simulada para el trabajo de Logística Internacional (UCSM, 2026). Los datos de contacto y de lotes son de ejemplo.</span></div>
+</div></footer>
+
+<script>
+{
+const $=s=>document.querySelector(s);
+const root=document.documentElement;
+let lang='en';
+try{lang=localStorage.getItem('mb-lang')||'en'}catch(e){}
+const setLang=l=>{lang=l;root.lang=l;$('#lang').textContent=l==='en'?'ES':'EN';try{localStorage.setItem('mb-lang',l)}catch(e){};renderLot(cur);calc()};
+$('#lang').addEventListener('click',()=>setLang(lang==='en'?'es':'en'));
+
+const LOTS=[
+{code:'MB-261118-01',prod:'2026-11-18',exp:'2027-05-18',bottles:300,maca:'MA-2611-07',reg:'Junín, Perú',berry:'AR-2611-03',ph:'3.4',brix:'12.8',past:'85 °C · 15 min',fill:'84 °C',ship:'MB-EXP-001'},
+{code:'MB-261118-02',prod:'2026-11-18',exp:'2027-05-18',bottles:300,maca:'MA-2611-07',reg:'Junín, Perú',berry:'AR-2611-03',ph:'3.5',brix:'12.6',past:'85 °C · 15 min',fill:'85 °C',ship:'MB-EXP-001'},
+{code:'MB-261119-01',prod:'2026-11-19',exp:'2027-05-19',bottles:300,maca:'MA-2611-08',reg:'Pasco, Perú',berry:'AR-2611-04',ph:'3.4',brix:'12.9',past:'85 °C · 15 min',fill:'84 °C',ship:'MB-EXP-001'}];
+const T={en:{prod:'Production date',exp:'Best by',maca:'Maca lot / region',berry:'Blueberry pulp lot',qc:'pH / °Brix',past:'Pasteurization',fill:'Fill temperature',ship:'Export shipment',rel:'Released',bot:'bottles',steps:['Raw materials received and checked','Blended and pasteurized','Hot-filled, capped and inverted','Leak and seal inspection','Lab analysis passed, lot released'],none:'No lot found with that code. Check the code printed next to the best-by date.'},
+es:{prod:'Fecha de elaboración',exp:'Consumir antes de',maca:'Lote / región de la maca',berry:'Lote de pulpa de arándanos',qc:'pH / °Brix',past:'Pasteurización',fill:'Temperatura de llenado',ship:'Embarque de exportación',rel:'Liberado',bot:'botellas',steps:['Recepción y control de insumos','Mezclado y pasteurización','Llenado en caliente, tapado e inversión','Inspección de fugas y sellado','Análisis de laboratorio aprobado, lote liberado'],none:'No se encontró un lote con ese código. Revisa el código impreso junto a la fecha de vencimiento.'}};
+const fd=(d,l)=>new Date(d+'T12:00:00').toLocaleDateString(l==='en'?'en-US':'es-PE',{year:'numeric',month:'short',day:'numeric'});
+let cur=LOTS[0];
+function renderLot(L){
+const t=T[lang],box=$('#lot');
+if(!L){box.innerHTML=`<div class="none">${t.none}</div>`;return}
+const times=['07:30','09:10','11:40','13:00',fd(L.prod,lang)];
+box.innerHTML=`<div class="top"><b>${L.code}</b><span class="ok">${t.rel}</span></div>
+<dl class="dl"><dt>${t.prod}</dt><dd>${fd(L.prod,lang)} · ${L.bottles} ${t.bot}</dd><dt>${t.exp}</dt><dd>${fd(L.exp,lang)}</dd>
+<dt>${t.maca}</dt><dd>${L.maca} · ${L.reg}</dd><dt>${t.berry}</dt><dd>${L.berry}</dd><dt>${t.qc}</dt><dd>${L.ph} / ${L.brix}</dd>
+<dt>${t.past}</dt><dd>${L.past}</dd><dt>${t.fill}</dt><dd>${L.fill}</dd><dt>${t.ship}</dt><dd>${L.ship}</dd></dl>
+<ol class="steps">${t.steps.map((s,i)=>`<li><span>${s}</span><time>${times[i]}</time></li>`).join('')}</ol>`}
+$('#chips').innerHTML=LOTS.map(l=>`<button class="chip" type="button" data-c="${l.code}">${l.code}</button>`).join('');
+$('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;$('#lotIn').value=b.dataset.c;find()});
+const find=()=>{const c=$('#lotIn').value.trim().toUpperCase();cur=LOTS.find(l=>l.code===c)||null;renderLot(cur)};
+$('#lotForm').addEventListener('submit',e=>{e.preventDefault();find()});
+
+const PRICE={DDP:3.50,FOB:2.68,EXW:2.24};
+const nf=(n,d=0)=>n.toLocaleString(lang==='en'?'en-US':'es-PE',{minimumFractionDigits:d,maximumFractionDigits:d});
+function calc(){
+const cases=Math.max(0,Math.floor(+$('#q-qty').value||0)),inc=$('#q-inc').value,ctry=$('#q-country').value;
+const bottles=cases*12,full=Math.floor(cases/80),rest=cases%80,pallets=full+(rest?1:0);
+const lv=Math.ceil(rest/16),vol=full*1.56+(rest?1.2*(0.15+0.23*lv):0),kg=cases*7.07+pallets*23;
+const pu=PRICE[inc],tot=bottles*pu;
+$('#s-bot').textContent=nf(bottles);$('#s-cas').textContent=nf(cases);$('#s-pal').textContent=nf(pallets);
+$('#s-kg').textContent=nf(kg,1)+' kg';$('#s-m3').textContent=nf(vol,2)+' m³';$('#s-pu').textContent='US$ '+nf(pu,2);
+$('#s-tot').textContent='US$ '+nf(tot,2);
+const en=lang==='en';let n=en?`${inc} ${inc==='DDP'?'Irwindale, CA: freight, U.S. entry and duties included.':inc==='FOB'?'Callao: you arrange ocean freight and U.S. import.':'Arequipa plant: you arrange all transport and customs.'}`:`${inc} ${inc==='DDP'?'Irwindale, CA: incluye flete, importación y derechos.':inc==='FOB'?'Callao: el comprador contrata el flete y la importación.':'Planta de Arequipa: el comprador asume transporte y aduanas.'}`;
+if(inc==='DDP'&&ctry!=='United States')n=en?'DDP pricing is available for U.S. deliveries only. Choose FOB or EXW for other countries.':'El precio DDP solo aplica a entregas en EE. UU. Elige FOB o EXW para otros países.';
+if(cases<20)n=en?'Minimum order: 20 cases (240 bottles).':'Pedido mínimo: 20 cajas (240 botellas).';
+$('#s-note').textContent=n}
+['#q-qty','#q-inc','#q-country'].forEach(s=>$(s).addEventListener('input',calc));
+document.querySelectorAll('[data-cases]').forEach(a=>a.addEventListener('click',()=>{$('#q-qty').value=a.dataset.cases;calc()}));
+const d=new Date(Date.now()+45*864e5);$('#q-date').value=d.toISOString().slice(0,10);
+
+let hist=[];try{hist=JSON.parse(localStorage.getItem('mb-q')||'[]')}catch(e){}
+const showHist=()=>{$('#hist').textContent=hist.length?(lang==='en'?'Your requests: ':'Tus solicitudes: ')+hist.map(h=>h.ref).join(', '):''};
+$('#qf').addEventListener('submit',e=>{
+e.preventDefault();const en=lang==='en',err=[];
+const v=id=>$('#'+id).value.trim();
+if(!v('q-company'))err.push(en?'company':'empresa');if(!v('q-name'))err.push(en?'contact name':'nombre');
+if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('q-email')))err.push(en?'a valid email':'un email válido');
+if(!v('q-city'))err.push(en?'delivery city':'ciudad de entrega');if((+v('q-qty')||0)<20)err.push(en?'at least 20 cases':'al menos 20 cajas');
+if(v('q-inc')==='DDP'&&v('q-country')!=='United States')err.push(en?'FOB or EXW for countries outside the U.S.':'FOB o EXW para países fuera de EE. UU.');
+$('#qerr').textContent=err.length?(en?'Please add ':'Completa ')+err.join(', ')+'.':'';
+if(err.length)return;
+const ref='Q-'+new Date().toISOString().slice(2,10).replace(/-/g,'')+'-'+String(Math.floor(Math.random()*9000)+1000);
+hist.push({ref});try{localStorage.setItem('mb-q',JSON.stringify(hist.slice(-5)))}catch(e){}
+const box=$('#qdone');box.hidden=false;box.className='done full';
+box.innerHTML=en?`<b>Request ${ref} recorded.</b> ${v('q-company')}: ${nf(+v('q-qty'))} cases to ${v('q-city')}, ${v('q-country')} (${v('q-inc')}), estimated ${$('#s-tot').textContent}. This is a simulated site, so nothing was sent; in the live version the export team would reply to ${v('q-email')}.`:`<b>Solicitud ${ref} registrada.</b> ${v('q-company')}: ${nf(+v('q-qty'))} cajas a ${v('q-city')}, ${v('q-country')} (${v('q-inc')}), estimado ${$('#s-tot').textContent}. Es un sitio simulado, por lo que no se envió nada; en la versión real el equipo de exportación respondería a ${v('q-email')}.`;
+showHist()});
+
+setLang(lang);showHist();
+}
+</script>
+</body>
+</html>
